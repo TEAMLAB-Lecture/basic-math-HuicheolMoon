@@ -86,35 +86,6 @@ def get_mean(number_list):
     return mean
 
 
-def quick_selection(number_list, order):
-    """
-    주어진 리스트에서 Quick selection을 진행.
-
-        Parameters:
-            number_list (list): integer로 값으로만 구성된 list
-                ex - [10, 33, 22, 99, 33]
-            order (int): 찾으려는 숫자의 크기 순서
-    """
-    mid_num = len(number_list) // 2
-    pivot = number_list[mid_num]
-    less = []
-    more = []
-
-    if len(number_list) == 1:
-        return number_list[0]
-
-    for number in number_list:
-        if number < pivot:
-            less.append(number)
-        else:
-            more.append(number)
-
-    if len(less) >= order:
-        return quick_selection(less, order)
-    else:
-        return quick_selection(more, order-len(less))
-
-
 def get_median(number_list):
     """
     주어진 리스트 숫자들의 중간값을 구함.
@@ -135,11 +106,12 @@ def get_median(number_list):
             >>> bm.get_median(number_list2)
             35.5
     """
-    mid_number = len(number_list) // 2 + 1
+    number_list.sort()
+    mid_number = len(number_list) // 2
 
     if len(number_list) % 2 == 1:
-        median = quick_selection(number_list, mid_number)
+        median = number_list[mid_number]
     else:
-        median = (quick_selection(number_list, mid_number - 1) + quick_selection(number_list, mid_number)) / 2
+        median = (number_list[mid_number] + number_list[mid_number+1]) / 2
     
     return median
