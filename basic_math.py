@@ -24,8 +24,13 @@ def get_greatest(number_list):
             >>> bm.get_greatest(number_list)
             99
     """
-    greatest_number = None
-    return greatest_number
+    greatest_number = number_list[0]    # greatest_number의 초깃값 설정
+
+    for number in number_list:          # 주어진 리스트 안의 원소 크기를 반복해서 비교
+        if number > greatest_number:
+            greatest_number = number
+
+    return greatest_number              # 가장 큰 숫자 반환
 
 
 def get_smallest(number_list):
@@ -45,8 +50,13 @@ def get_smallest(number_list):
             >>> bm.get_smallest(number_list)
             11
     """
-    smallest_number = None
-    return smallest_number
+    smallest_number = number_list[0]    # smallest_number의 초깃값 설정
+
+    for number in number_list:          # 주어진 리스트 안의 원소 크기를 반복해서 비교
+        if number < smallest_number:
+            smallest_number = number
+
+    return smallest_number              # 가장 작은 숫자 반환
 
 
 def get_mean(number_list):
@@ -66,7 +76,13 @@ def get_mean(number_list):
             >>> bm.get_mean(number_list)
             47
     """
-    mean = None
+    sum = 0
+
+    for number in number_list:          # 리스트 원소들의 합 계산
+        sum += number
+
+    mean = sum / len(number_list)       # 리스트 원소들의 합을 리스트 원소의 개수로 나누어 평균 계산
+
     return mean
 
 
@@ -90,5 +106,12 @@ def get_median(number_list):
             >>> bm.get_median(number_list2)
             35.5
     """
-    median = None
+    number_list.sort()
+    mid_number = len(number_list) // 2
+
+    if len(number_list) % 2 == 1:
+        median = number_list[mid_number]
+    else:
+        median = (number_list[mid_number - 1] + number_list[mid_number]) / 2
+    
     return median
