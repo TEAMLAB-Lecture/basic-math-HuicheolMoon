@@ -107,7 +107,7 @@ def get_median(number_list):
             35.5
     """
     
-    mid_number = number_list[len(number_list) // 2]
+    mid_number = len(number_list) // 2
     
     if len(number_list) % 2 == 1:
         median = number_list[mid_number]
